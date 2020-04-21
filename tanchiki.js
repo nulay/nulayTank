@@ -6,17 +6,17 @@ var Place=Class.create({
         this.heigth=0;
         this.util=new Util();
         this.screen=this.util.getPageSize();
-        this.listAllObj=new Array();//список всех объектов
-        this.listObj=new Array();//массив элементов подписавшихся на событие перерисовки игрового поля
-        this.listMoveObj=new Array();//список движ объектов
-        this.countCadr=(option.countCadr)?Math.round(1000/option.countCadr):20;//Количество кадров в секунду для перерисовки игрового поля в милисек
+        this.listAllObj=new Array();//СЃРїРёСЃРѕРє РІСЃРµС… РѕР±СЉРµРєС‚РѕРІ
+        this.listObj=new Array();//РјР°СЃСЃРёРІ СЌР»РµРјРµРЅС‚РѕРІ РїРѕРґРїРёСЃР°РІС€РёС…СЃСЏ РЅР° СЃРѕР±С‹С‚РёРµ РїРµСЂРµСЂРёСЃРѕРІРєРё РёРіСЂРѕРІРѕРіРѕ РїРѕР»СЏ
+        this.listMoveObj=new Array();//СЃРїРёСЃРѕРє РґРІРёР¶ РѕР±СЉРµРєС‚РѕРІ
+        this.countCadr=(option.countCadr)?Math.round(1000/option.countCadr):20;//РљРѕР»РёС‡РµСЃС‚РІРѕ РєР°РґСЂРѕРІ РІ СЃРµРєСѓРЅРґСѓ РґР»СЏ РїРµСЂРµСЂРёСЃРѕРІРєРё РёРіСЂРѕРІРѕРіРѕ РїРѕР»СЏ РІ РјРёР»РёСЃРµРє
         this.col=new Collides();
-        this.place=document.body;//игровое поле
+        this.place=document.body;//РёРіСЂРѕРІРѕРµ РїРѕР»Рµ
         this.place.style.backgroundColor='#a1a95e';
         this.pan=new Object();
         this.paintPanelInformation();
         this.paintContent();
-        this.timeLR=0;//время последней отрисовки
+        this.timeLR=0;//РІСЂРµРјСЏ РїРѕСЃР»РµРґРЅРµР№ РѕС‚СЂРёСЃРѕРІРєРё
         this.obrabKey();
         this._redrawPole();
     },
@@ -57,7 +57,7 @@ var Place=Class.create({
             if(e.charCode==32) thisEl.tank.shoot();
             //if(e.keyPress==39) thisEl.moveObjL(thisEl.tank);
         });
-    },           
+    },
     paintContent:function(jsonPole){
         jsonPole=(jsonPole)?jsonPole:jss;
         jsonPole=jsonPole.evalJSON();
@@ -87,7 +87,7 @@ var Place=Class.create({
     paintPanelInformation:function(jsonPole){
         this.pan.life=new Element('span');
         var el=new Element('div',{style:'background:url("images/metall.png") repeat-x;height:100px; width:1865px; position:absolute;left:10px;top:795px;z-index:1;'}).insert(
-                new Element('div',{style:"position:relative;left:300px;top:10px;width:400px;"}).insert(new Element('div').insert("Жизнь: ").insert(this.pan.life)));
+                new Element('div',{style:"position:relative;left:300px;top:10px;width:400px;"}).insert(new Element('div').insert("Р–РёР·РЅСЊ: ").insert(this.pan.life)));
         this.place.insert(el);
     }
 
@@ -131,10 +131,10 @@ var StaticObject=Class.create({
         this.lAngle=angle;
        // this.source.style.MozTransform='rotate('+this.lAngle+'deg)';
        this.source.setStyle({
-            '-moz-transform': 'rotate('+this.lAngle+'deg)', /* Для Firefox */
-            '-ms-transform': 'rotate('+this.lAngle+'deg)', /* Для IE */
-            '-webkit-transform': 'rotate('+this.lAngle+'deg)', /* Для Safari, Chrome, iOS */
-            '-o-transform': 'rotate('+this.lAngle+'deg)', /* Для Opera */
+            '-moz-transform': 'rotate('+this.lAngle+'deg)', /* Р”Р»СЏ Firefox */
+            '-ms-transform': 'rotate('+this.lAngle+'deg)', /* Р”Р»СЏ IE */
+            '-webkit-transform': 'rotate('+this.lAngle+'deg)', /* Р”Р»СЏ Safari, Chrome, iOS */
+            '-o-transform': 'rotate('+this.lAngle+'deg)', /* Р”Р»СЏ Opera */
             'transform': 'rotate('+this.lAngle+'deg)'
          });
 
@@ -158,21 +158,21 @@ var DinamicObject=Class.create(StaticObject,{
         this.life=100;
         this.moveOb=false;
         this.rotateOb=false;
-        this.dir=true;//напр движ вперед (true)  назад (false)
-        this.dirR=true;//вращение по час (true) против (false)
-        this.timeLR=new Date().getTime();//время последней перерисовки
+        this.dir=true;//РЅР°РїСЂ РґРІРёР¶ РІРїРµСЂРµРґ (true)  РЅР°Р·Р°Рґ (false)
+        this.dirR=true;//РІСЂР°С‰РµРЅРёРµ РїРѕ С‡Р°СЃ (true) РїСЂРѕС‚РёРІ (false)
+        this.timeLR=new Date().getTime();//РІСЂРµРјСЏ РїРѕСЃР»РµРґРЅРµР№ РїРµСЂРµСЂРёСЃРѕРІРєРё
         this.smC = function(e){thisEl._moveObj(e.t);}
         this.smR = function(e){thisEl._rotateObj(e.t);}
         this.startMLine();
-        this.dM.l=Math.cos(this.lAngle*Math.PI/180);//сразу считаем вектор движения
+        this.dM.l=Math.cos(this.lAngle*Math.PI/180);//СЃСЂР°Р·Сѓ СЃС‡РёС‚Р°РµРј РІРµРєС‚РѕСЂ РґРІРёР¶РµРЅРёСЏ
         this.dM.t=Math.sin(this.lAngle*Math.PI/180);
     },
     _moveObj:function(time,e){
         //        this._rOb();
         //        if(this.timeLR==0) {this.timeLR=time-this.owner.countCadr};
-        //        this.dM.l=Math.cos(this.lAngle*Math.PI/180);//сразу считаем вектор движения
+        //        this.dM.l=Math.cos(this.lAngle*Math.PI/180);//СЃСЂР°Р·Сѓ СЃС‡РёС‚Р°РµРј РІРµРєС‚РѕСЂ РґРІРёР¶РµРЅРёСЏ
         //        this.dM.t=Math.sin(this.lAngle*Math.PI/180);
-        //        var p=(time-this.timeLR)*this.speed; //путь который мог пройти этот объект за отведенное время
+        //        var p=(time-this.timeLR)*this.speed; //РїСѓС‚СЊ РєРѕС‚РѕСЂС‹Р№ РјРѕРі РїСЂРѕР№С‚Рё СЌС‚РѕС‚ РѕР±СЉРµРєС‚ Р·Р° РѕС‚РІРµРґРµРЅРЅРѕРµ РІСЂРµРјСЏ
         //        this.l+=Math.round(p*this.dM.l)*((this.dir)?1:-1);
         //        this.t+=Math.round(p*this.dM.t)*((this.dir)?1:-1);
         //        this._paint();
@@ -180,7 +180,7 @@ var DinamicObject=Class.create(StaticObject,{
         //        if(!e)  this.timeLR=time;
 
         this._rOb();
-        var p=(time-this.timeMNoR)*this.speed; //путь который мог пройти этот объект за отведенное время (ещчку отсчета берем с того времени как он начал двигаться прямо и сним не случалось колизий)
+        var p=(time-this.timeMNoR)*this.speed; //РїСѓС‚СЊ РєРѕС‚РѕСЂС‹Р№ РјРѕРі РїСЂРѕР№С‚Рё СЌС‚РѕС‚ РѕР±СЉРµРєС‚ Р·Р° РѕС‚РІРµРґРµРЅРЅРѕРµ РІСЂРµРјСЏ (РµС‰С‡РєСѓ РѕС‚СЃС‡РµС‚Р° Р±РµСЂРµРј СЃ С‚РѕРіРѕ РІСЂРµРјРµРЅРё РєР°Рє РѕРЅ РЅР°С‡Р°Р» РґРІРёРіР°С‚СЊСЃСЏ РїСЂСЏРјРѕ Рё СЃРЅРёРј РЅРµ СЃР»СѓС‡Р°Р»РѕСЃСЊ РєРѕР»РёР·РёР№)
 
         this.l=this.lm+Math.round(p*this.dM.l)*((this.dir)?1:-1);
         this.t=this.tm+Math.round(p*this.dM.t)*((this.dir)?1:-1);
@@ -197,13 +197,13 @@ var DinamicObject=Class.create(StaticObject,{
         var a=this.lAngle-delt;
         if(a<-180) a=360+a; if(a>180) a=a-360;
         this._rotateObject(a);
-        this.dM.l=Math.cos(this.lAngle*Math.PI/180);//пересчитываем вектор движения с учетом текущего поворота
+        this.dM.l=Math.cos(this.lAngle*Math.PI/180);//РїРµСЂРµСЃС‡РёС‚С‹РІР°РµРј РІРµРєС‚РѕСЂ РґРІРёР¶РµРЅРёСЏ СЃ СѓС‡РµС‚РѕРј С‚РµРєСѓС‰РµРіРѕ РїРѕРІРѕСЂРѕС‚Р°
         this.dM.t=Math.sin(this.lAngle*Math.PI/180);
         if(isNaN(this.dM.l) | isNaN(this.dM.t))
             new Util().printEl(this.owner.place,800, 800,""+this.l+" "+this.t,1000);
         this.startMLine();
         this.timeLR=new Date().getTime();
-        //this.dM.t=Math.sin(this.lAngle*Math.PI/180);this.dM.l=Math.cos(this.lAngle*Math.PI/180);//сразу считаем вектор движения
+        //this.dM.t=Math.sin(this.lAngle*Math.PI/180);this.dM.l=Math.cos(this.lAngle*Math.PI/180);//СЃСЂР°Р·Сѓ СЃС‡РёС‚Р°РµРј РІРµРєС‚РѕСЂ РґРІРёР¶РµРЅРёСЏ
     },
     rotateObj:function(dirR){
         if(!this.rotateOb){
@@ -212,7 +212,7 @@ var DinamicObject=Class.create(StaticObject,{
             this.timeLR=new Date().getTime();
             this.startMLine();
             if(!this.owner.listObj.include(this.smR))
-                this.owner.listObj[this.owner.listObj.length]=this.smR;  //говорим что делать объекту  при перерисовки поля (вызвать функцию smC)
+                this.owner.listObj[this.owner.listObj.length]=this.smR;  //РіРѕРІРѕСЂРёРј С‡С‚Рѕ РґРµР»Р°С‚СЊ РѕР±СЉРµРєС‚Сѓ  РїСЂРё РїРµСЂРµСЂРёСЃРѕРІРєРё РїРѕР»СЏ (РІС‹Р·РІР°С‚СЊ С„СѓРЅРєС†РёСЋ smC)
             if(!this.moveOb){
                 if(!this.owner.listMoveObj.include(this))
                     this.owner.listMoveObj[this.owner.listMoveObj.length]=this;
@@ -222,7 +222,7 @@ var DinamicObject=Class.create(StaticObject,{
     stopRotateObj:function(){
         this.rotateOb=false;
         this.timeLR=new Date().getTime();
-        this.owner.listObj=this.owner.listObj.without(this.smR);  //удаляем объект из отрисовки - он не движется - значит и перерисовыывать не нужно
+        this.owner.listObj=this.owner.listObj.without(this.smR);  //СѓРґР°Р»СЏРµРј РѕР±СЉРµРєС‚ РёР· РѕС‚СЂРёСЃРѕРІРєРё - РѕРЅ РЅРµ РґРІРёР¶РµС‚СЃСЏ - Р·РЅР°С‡РёС‚ Рё РїРµСЂРµСЂРёСЃРѕРІС‹С‹РІР°С‚СЊ РЅРµ РЅСѓР¶РЅРѕ
         this.owner.listMoveObj=this.owner.listMoveObj.without(this);
     },
     _rOb:function(){},
@@ -233,7 +233,7 @@ var DinamicObject=Class.create(StaticObject,{
             this.startMLine();
             this.moveOb=true;
             if(!this.owner.listObj.include(this.smC))
-                this.owner.listObj[this.owner.listObj.length]=this.smC;  //говорим что делать объекту  при перерисовки поля (вызвать функцию smC)
+                this.owner.listObj[this.owner.listObj.length]=this.smC;  //РіРѕРІРѕСЂРёРј С‡С‚Рѕ РґРµР»Р°С‚СЊ РѕР±СЉРµРєС‚Сѓ  РїСЂРё РїРµСЂРµСЂРёСЃРѕРІРєРё РїРѕР»СЏ (РІС‹Р·РІР°С‚СЊ С„СѓРЅРєС†РёСЋ smC)
             if(!this.rotateOb){
                 if(!this.owner.listMoveObj.include(this))
                     this.owner.listMoveObj[this.owner.listMoveObj.length]=this;
@@ -243,14 +243,14 @@ var DinamicObject=Class.create(StaticObject,{
     stopMoveObj:function(){
         this.moveOb=false;
         //this.timeLR=0;
-        this.owner.listObj=this.owner.listObj.without(this.smC);  //удаляем объект из отрисовки - он не движется - значит и перерисовыывать не нужно
+        this.owner.listObj=this.owner.listObj.without(this.smC);  //СѓРґР°Р»СЏРµРј РѕР±СЉРµРєС‚ РёР· РѕС‚СЂРёСЃРѕРІРєРё - РѕРЅ РЅРµ РґРІРёР¶РµС‚СЃСЏ - Р·РЅР°С‡РёС‚ Рё РїРµСЂРµСЂРёСЃРѕРІС‹С‹РІР°С‚СЊ РЅРµ РЅСѓР¶РЅРѕ
         this.owner.listMoveObj=this.owner.listMoveObj.without(this);
     },
-//считаем что после этого метода танк двигается прямо dTime-смещение времени для изменения скорости (не обяз параметр)
+//СЃС‡РёС‚Р°РµРј С‡С‚Рѕ РїРѕСЃР»Рµ СЌС‚РѕРіРѕ РјРµС‚РѕРґР° С‚Р°РЅРє РґРІРёРіР°РµС‚СЃСЏ РїСЂСЏРјРѕ dTime-СЃРјРµС‰РµРЅРёРµ РІСЂРµРјРµРЅРё РґР»СЏ РёР·РјРµРЅРµРЅРёСЏ СЃРєРѕСЂРѕСЃС‚Рё (РЅРµ РѕР±СЏР· РїР°СЂР°РјРµС‚СЂ)
     startMLine:function(dTime){
-        this.lm=this.l; //точки с которых пересчитываем движение объекта по прямому маршруту
+        this.lm=this.l; //С‚РѕС‡РєРё СЃ РєРѕС‚РѕСЂС‹С… РїРµСЂРµСЃС‡РёС‚С‹РІР°РµРј РґРІРёР¶РµРЅРёРµ РѕР±СЉРµРєС‚Р° РїРѕ РїСЂСЏРјРѕРјСѓ РјР°СЂС€СЂСѓС‚Сѓ
         this.tm=this.t;
-        this.timeMNoR=new Date().getTime()+((dTime)?dTime:0);//время с момента начала движения
+        this.timeMNoR=new Date().getTime()+((dTime)?dTime:0);//РІСЂРµРјСЏ СЃ РјРѕРјРµРЅС‚Р° РЅР°С‡Р°Р»Р° РґРІРёР¶РµРЅРёСЏ
     }
 })
 
@@ -260,8 +260,8 @@ var Tank=Class.create(DinamicObject, {
         $super(owner,src,option);
         this.speed=0.1;
         this.speedR=0.06;
-        this.timeLS=0;//Время последнего выстрела
-        this.tP=1000;//Время перезарядки танка в милисекундах
+        this.timeLS=0;//Р’СЂРµРјСЏ РїРѕСЃР»РµРґРЅРµРіРѕ РІС‹СЃС‚СЂРµР»Р°
+        this.tP=1000;//Р’СЂРµРјСЏ РїРµСЂРµР·Р°СЂСЏРґРєРё С‚Р°РЅРєР° РІ РјРёР»РёСЃРµРєСѓРЅРґР°С…
         this.uron=10;
         this.owner.pan.life.update("100");
     },
@@ -270,7 +270,7 @@ var Tank=Class.create(DinamicObject, {
             var pul=new Pulja(this);
             this.timeLS=new Date().getTime();
             //$('soundClick').play();
-            //когда танк стреляет его отбрасывает назад
+            //РєРѕРіРґР° С‚Р°РЅРє СЃС‚СЂРµР»СЏРµС‚ РµРіРѕ РѕС‚Р±СЂР°СЃС‹РІР°РµС‚ РЅР°Р·Р°Рґ
             this.startMLine(30);
             this._moveObj(new Date().getTime());
         }
@@ -301,7 +301,7 @@ var Tank=Class.create(DinamicObject, {
         }
         this.life-=obj.uron;
         this.owner.pan.life.update(this.life);
-        //            new Util().printEl(this.owner.place,900,800,"Жизнь: "+this.life+"; Полученый урон",5000);
+        //            new Util().printEl(this.owner.place,900,800,"Р–РёР·РЅСЊ: "+this.life+"; РџРѕР»СѓС‡РµРЅС‹Р№ СѓСЂРѕРЅ",5000);
         if(this.life<0){
             new Vzriv(this);
             var a=new Sound(this.owner,"images/Vzryv3.wav");a.play();a.remove(6000);
@@ -317,16 +317,16 @@ var TankBot=Class.create(DinamicObject, {
         $super(owner,src,option);
         this.speed=0.03;
         this.speedR=0.03;
-        this.timeLS=0;//Время последнего выстрела
-        this.tP=1000;//Время перезарядки танка в милисекундах
+        this.timeLS=0;//Р’СЂРµРјСЏ РїРѕСЃР»РµРґРЅРµРіРѕ РІС‹СЃС‚СЂРµР»Р°
+        this.tP=1000;//Р’СЂРµРјСЏ РїРµСЂРµР·Р°СЂСЏРґРєРё С‚Р°РЅРєР° РІ РјРёР»РёСЃРµРєСѓРЅРґР°С…
         this.uron=10;
 
 
-        this.listM=(option.lM)?option.lM:null;//точки маршрута патрулирования
-        this.unitCel=(option.unitCel)?option.unitCel:null;//юнит который нужно уничтожить
-        this.rObzor=(option.rObzor)?option.rObzor:200;//радиус обзора для поиска вражеского юнита
-        this.alarm=false//режим тревоги
-        this.maxRV=500;//максимальное расстояние выбора маршрута
+        this.listM=(option.lM)?option.lM:null;//С‚РѕС‡РєРё РјР°СЂС€СЂСѓС‚Р° РїР°С‚СЂСѓР»РёСЂРѕРІР°РЅРёСЏ
+        this.unitCel=(option.unitCel)?option.unitCel:null;//СЋРЅРёС‚ РєРѕС‚РѕСЂС‹Р№ РЅСѓР¶РЅРѕ СѓРЅРёС‡С‚РѕР¶РёС‚СЊ
+        this.rObzor=(option.rObzor)?option.rObzor:200;//СЂР°РґРёСѓСЃ РѕР±Р·РѕСЂР° РґР»СЏ РїРѕРёСЃРєР° РІСЂР°Р¶РµСЃРєРѕРіРѕ СЋРЅРёС‚Р°
+        this.alarm=false//СЂРµР¶РёРј С‚СЂРµРІРѕРіРё
+        this.maxRV=500;//РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ СЂР°СЃСЃС‚РѕСЏРЅРёРµ РІС‹Р±РѕСЂР° РјР°СЂС€СЂСѓС‚Р°
         this.myP=new Object();
         this.myP.x=0;this.myP.y=0;this.myP.a=0;
         this.nextAct();
@@ -337,7 +337,7 @@ var TankBot=Class.create(DinamicObject, {
             var pul=new Pulja(this);
             this.timeLS=new Date().getTime();
             //$('soundClick').play();
-            //когда танк стреляет его отбрасывает назад
+            //РєРѕРіРґР° С‚Р°РЅРє СЃС‚СЂРµР»СЏРµС‚ РµРіРѕ РѕС‚Р±СЂР°СЃС‹РІР°РµС‚ РЅР°Р·Р°Рґ
             //this.startMLine(30);
             //this._moveObj(new Date().getTime());
         }
@@ -348,34 +348,34 @@ var TankBot=Class.create(DinamicObject, {
         if(r<1000) r=2500;
         setTimeout(function(){thisEl.shoot();thisEl.rShoot();},r);
     },
-//метод для получение рандомной точки маршрута
+//РјРµС‚РѕРґ РґР»СЏ РїРѕР»СѓС‡РµРЅРёРµ СЂР°РЅРґРѕРјРЅРѕР№ С‚РѕС‡РєРё РјР°СЂС€СЂСѓС‚Р°
     getRPM:function(vDvig,ugPov){
-        var td=15;//дельта на которую мы уменьшаем наш вектор если наша точка попала внутрь какого либо объекта
-        var pb=200;//минимальное расстояние от нашего объета до конца его движ если оно меньше этого числа то нужно найти новый вектор движ
+        var td=15;//РґРµР»СЊС‚Р° РЅР° РєРѕС‚РѕСЂСѓСЋ РјС‹ СѓРјРµРЅСЊС€Р°РµРј РЅР°С€ РІРµРєС‚РѕСЂ РµСЃР»Рё РЅР°С€Р° С‚РѕС‡РєР° РїРѕРїР°Р»Р° РІРЅСѓС‚СЂСЊ РєР°РєРѕРіРѕ Р»РёР±Рѕ РѕР±СЉРµРєС‚Р°
+        var pb=200;//РјРёРЅРёРјР°Р»СЊРЅРѕРµ СЂР°СЃСЃС‚РѕСЏРЅРёРµ РѕС‚ РЅР°С€РµРіРѕ РѕР±СЉРµС‚Р° РґРѕ РєРѕРЅС†Р° РµРіРѕ РґРІРёР¶ РµСЃР»Рё РѕРЅРѕ РјРµРЅСЊС€Рµ СЌС‚РѕРіРѕ С‡РёСЃР»Р° С‚Рѕ РЅСѓР¶РЅРѕ РЅР°Р№С‚Рё РЅРѕРІС‹Р№ РІРµРєС‚РѕСЂ РґРІРёР¶
 
-        //1. берем случайное число длины вектора движ.
+        //1. Р±РµСЂРµРј СЃР»СѓС‡Р°Р№РЅРѕРµ С‡РёСЃР»Рѕ РґР»РёРЅС‹ РІРµРєС‚РѕСЂР° РґРІРёР¶.
         vDvig=(vDvig)?(vDvig-td):Math.round(Math.random()*500);
         if(vDvig<pb){return this.getRPM();}
-        //2. берем рандомный угол поворота
+        //2. Р±РµСЂРµРј СЂР°РЅРґРѕРјРЅС‹Р№ СѓРіРѕР» РїРѕРІРѕСЂРѕС‚Р°
         ugPov=(ugPov)?ugPov:(Math.round((Math.random()*180)*((Math.floor(Math.random()*2)==0)?-1:1)));
-        //3. находим нашу точку имея длинну вектора и угол поворота
+        //3. РЅР°С…РѕРґРёРј РЅР°С€Сѓ С‚РѕС‡РєСѓ РёРјРµСЏ РґР»РёРЅРЅСѓ РІРµРєС‚РѕСЂР° Рё СѓРіРѕР» РїРѕРІРѕСЂРѕС‚Р°
         var ob=new Object();
         ob.x=this.l+Math.round(vDvig*Math.cos(ugPov*Math.PI/180));
         ob.y=this.t+Math.round(vDvig*Math.sin(ugPov*Math.PI/180));
 
-        //3. проверяем не лежит ли наша точка внутри какого либо др. объекта
+        //3. РїСЂРѕРІРµСЂСЏРµРј РЅРµ Р»РµР¶РёС‚ Р»Рё РЅР°С€Р° С‚РѕС‡РєР° РІРЅСѓС‚СЂРё РєР°РєРѕРіРѕ Р»РёР±Рѕ РґСЂ. РѕР±СЉРµРєС‚Р°
         var col=new Collides();
         for(var x=0;x<this.owner.listAllObj.length;x++){
-            //проверяем не находится ли наша точка внутри объекта this.owner.listAllObj[x]
-            //если лежит то вызываем наш метод и передаем ему вектор движ
+            //РїСЂРѕРІРµСЂСЏРµРј РЅРµ РЅР°С…РѕРґРёС‚СЃСЏ Р»Рё РЅР°С€Р° С‚РѕС‡РєР° РІРЅСѓС‚СЂРё РѕР±СЉРµРєС‚Р° this.owner.listAllObj[x]
+            //РµСЃР»Рё Р»РµР¶РёС‚ С‚Рѕ РІС‹Р·С‹РІР°РµРј РЅР°С€ РјРµС‚РѕРґ Рё РїРµСЂРµРґР°РµРј РµРјСѓ РІРµРєС‚РѕСЂ РґРІРёР¶
 
             var r1=col.rotObj(this.owner.listAllObj[x], col.getPO(this.owner.listAllObj[x]));
-            //если попадает то ищем новую точку
+            //РµСЃР»Рё РїРѕРїР°РґР°РµС‚ С‚Рѕ РёС‰РµРј РЅРѕРІСѓСЋ С‚РѕС‡РєСѓ
             if(col._ptoQuad(ob.x, ob.y, r1[0].x,r1[0].y,r1[1].x,r1[1].y,r1[2].x,r1[2].y,r1[3].x,r1[3].y)){
                 return this.getRPM(vDvig,ugPov);
             }
         }
-        //если мы не попали не в один из объектов мы должны попасть сюда
+        //РµСЃР»Рё РјС‹ РЅРµ РїРѕРїР°Р»Рё РЅРµ РІ РѕРґРёРЅ РёР· РѕР±СЉРµРєС‚РѕРІ РјС‹ РґРѕР»Р¶РЅС‹ РїРѕРїР°СЃС‚СЊ СЃСЋРґР°
 
         ob.a=ugPov;
         this.dM.l=-Math.cos(ugPov*Math.PI/180);
@@ -390,7 +390,7 @@ var TankBot=Class.create(DinamicObject, {
             try{this.source.remove();}catch(e){}
             this.shoot=function(){};
         }
-        //проверяем доехал ли танк до заданной точки
+        //РїСЂРѕРІРµСЂСЏРµРј РґРѕРµС…Р°Р» Р»Рё С‚Р°РЅРє РґРѕ Р·Р°РґР°РЅРЅРѕР№ С‚РѕС‡РєРё
         if(new Collides().getPToCircle(this.myP.x,this.myP.y,this.l,this.t,10)){
             this.stopMoveObj();
             this.nextAct();
@@ -424,7 +424,7 @@ var TankBot=Class.create(DinamicObject, {
 
         // this.owner.util.printEl(this.owner.place,this.l,this.t,'otbros',1000);
     },
-//функция вызывает следующее действие юнита
+//С„СѓРЅРєС†РёСЏ РІС‹Р·С‹РІР°РµС‚ СЃР»РµРґСѓСЋС‰РµРµ РґРµР№СЃС‚РІРёРµ СЋРЅРёС‚Р°
     nextAct:function(){
         this.myP=this.getRPM();
         this._rotateObject(this.myP.a);
@@ -569,7 +569,7 @@ var Util=Class.create({
         }
         return {pageWidth: pageWidth ,pageHeight: pageHeight , windowWidth: windowWidth, windowHeight: windowHeight};
     },
-//content - место в какую оболочку вставить , l -расстояние слева, t- расстояние сверху, el- текст который или контент нужно вставить, timeHide- время через которое удалить  в милисек(0 - не удалять никогда)
+//content - РјРµСЃС‚Рѕ РІ РєР°РєСѓСЋ РѕР±РѕР»РѕС‡РєСѓ РІСЃС‚Р°РІРёС‚СЊ , l -СЂР°СЃСЃС‚РѕСЏРЅРёРµ СЃР»РµРІР°, t- СЂР°СЃСЃС‚РѕСЏРЅРёРµ СЃРІРµСЂС…Сѓ, el- С‚РµРєСЃС‚ РєРѕС‚РѕСЂС‹Р№ РёР»Рё РєРѕРЅС‚РµРЅС‚ РЅСѓР¶РЅРѕ РІСЃС‚Р°РІРёС‚СЊ, timeHide- РІСЂРµРјСЏ С‡РµСЂРµР· РєРѕС‚РѕСЂРѕРµ СѓРґР°Р»РёС‚СЊ  РІ РјРёР»РёСЃРµРє(0 - РЅРµ СѓРґР°Р»СЏС‚СЊ РЅРёРєРѕРіРґР°)
     printEl:function(content,l,t,el,timeHide){
         var df=new Element('div',{style:"font-size:xx-large;position:absolute;left:"+l+"px;top:"+t+"px;z-index:3"}).insert(el);
         content.insert(df);
