@@ -1,10 +1,10 @@
 var Place=Class.create({
     initialize: function(option){
         this.util=new Util();
-        this.place=document.body;//игровое поле
+        this.place=document.body;//РёРіСЂРѕРІРѕРµ РїРѕР»Рµ
         this.place.style.backgroundColor='#a1a95e';
         this.screen=this.util.getPageSize();
-        this.listAllObj=new Array();//список всех объектов
+        this.listAllObj=new Array();//СЃРїРёСЃРѕРє РІСЃРµС… РѕР±СЉРµРєС‚РѕРІ
         this.curObj=null;
         this.oknoInstr=new OknoInstr(this);
     }
@@ -143,7 +143,7 @@ var OknoInstr=Class.create({
             opt.width=300;
             opt.height=700;
             opt.zIndex=1002;
-            var v=new Wind(thisEl.owner.place, "Инструменты",opt);
+            var v=new Wind(thisEl.owner.place, "РРЅСЃС‚СЂСѓРјРµРЅС‚С‹",opt);
 
             v.show();
 
@@ -152,7 +152,7 @@ var OknoInstr=Class.create({
 
 
 
-        var butLC=new Element('input',{type:'button',value:'Загрузить поле'});
+        var butLC=new Element('input',{type:'button',value:'Р—Р°РіСЂСѓР·РёС‚СЊ РїРѕР»Рµ'});
         butLC.onclick=function(){
             var jss='[{"classO":"StopObj","l":"395","t":"36","src":"images/tree1m.png"},{"classO":"StopObj","l":"463","t":"41","src":"images/tree1m.png"},{"classO":"StopObj","l":"407","t":"212","src":"images/tree1m.png"},{"classO":"StopObj","l":"466","t":"212","src":"images/tree1m.png"},{"classO":"StopObj","l":"529","t":"217","src":"images/tree1m.png"},{"classO":"StopObj","l":"523","t":"43","src":"images/tree1m.png"},{"classO":"StopObj","l":"585","t":"40","src":"images/tree1m.png"},{"classO":"StopObj","l":"590","t":"215","src":"images/tree1m.png"},{"classO":"StopObj","l":"652","t":"218","src":"images/tree1m.png"},{"classO":"StopObj","l":"646","t":"41","src":"images/tree1m.png"},{"classO":"StopObj","l":"709","t":"221","src":"images/tree1m.png"},{"classO":"StopObj","l":"713","t":"283","src":"images/tree1m.png"},{"classO":"StopObj","l":"711","t":"344","src":"images/tree1m.png"},{"classO":"StopObj","l":"708","t":"402","src":"images/tree1m.png"},{"classO":"StopObj","l":"703","t":"463","src":"images/tree1m.png"},{"classO":"StopObj","l":"706","t":"520","src":"images/tree1m.png"},{"classO":"StopObj","l":"705","t":"44","src":"images/tree1m.png"},{"classO":"StopObj","l":"766","t":"46","src":"images/tree1m.png"},{"classO":"StopObj","l":"395","t":"36","src":"images/tree1m.png"},{"classO":"StopObj","l":"463","t":"41","src":"images/tree1m.png"},{"classO":"StopObj","l":"523","t":"43","src":"images/tree1m.png"},{"classO":"StopObj","l":"585","t":"40","src":"images/tree1m.png"},{"classO":"StopObj","l":"646","t":"41","src":"images/tree1m.png"},{"classO":"StopObj","l":"705","t":"44","src":"images/tree1m.png"},{"classO":"StopObj","l":"766","t":"46","src":"images/tree1m.png"},{"classO":"StopObj","l":"825","t":"46","src":"images/tree1m.png"},{"classO":"StopObj","l":"891","t":"46","src":"images/tree1m.png"},{"classO":"StopObj","l":"899","t":"284","src":"images/tree1m.png"},{"classO":"StopObj","l":"901","t":"231","src":"images/tree1m.png"},{"classO":"StopObj","l":"899","t":"284","src":"images/tree1m.png"},{"classO":"StopObj","l":"970","t":"232","src":"images/tree1m.png"},{"classO":"StopObj","l":"954","t":"46","src":"images/tree1m.png"},{"classO":"StopObj","l":"899","t":"344","src":"images/tree1m.png"},{"classO":"StopObj","l":"515","t":"331","src":"images/dom1.png"},{"classO":"StopObj","l":"600","t":"364","src":"images/dom2.png"},{"classO":"StopObj","l":"901","t":"411","src":"images/tree1m.png"},{"classO":"StopObj","l":"898","t":"476","src":"images/tree1m.png"},{"classO":"StopObj","l":"706","t":"520","src":"images/tree1m.png"},{"classO":"StopObj","l":"895","t":"532","src":"images/tree1m.png"},{"classO":"StopObj","l":"898","t":"476","src":"images/tree1m.png"},{"classO":"StopObj","l":"901","t":"411","src":"images/tree1m.png"},{"classO":"StopObj","l":"899","t":"344","src":"images/tree1m.png"},{"classO":"StopObj","l":"899","t":"284","src":"images/tree1m.png"},{"classO":"StopObj","l":"1098","t":"348","src":"images/dom1.png"},{"classO":"StopObj","l":"260","t":"837","src":"images/tree1m.png"},{"classO":"StopObj","l":"319","t":"837","src":"images/tree1m.png"},{"classO":"StopObj","l":"379","t":"837","src":"images/tree1m.png"},{"classO":"StopObj","l":"438","t":"839","src":"images/tree1m.png"},{"classO":"StopObj","l":"495","t":"840","src":"images/tree1m.png"},{"classO":"StopObj","l":"556","t":"838","src":"images/tree1m.png"},{"classO":"StopObj","l":"616","t":"840","src":"images/tree1m.png"},{"classO":"StopObj","l":"674","t":"841","src":"images/tree1m.png"},{"classO":"StopObj","l":"729","t":"841","src":"images/tree1m.png"},{"classO":"StopObj","l":"790","t":"842","src":"images/tree1m.png"},{"classO":"StopObj","l":"851","t":"838","src":"images/tree1m.png"},{"classO":"StopObj","l":"907","t":"841","src":"images/tree1m.png"},{"classO":"StopObj","l":"959","t":"842","src":"images/tree1m.png"},{"classO":"StopObj","l":"1016","t":"838","src":"images/tree1m.png"},{"classO":"StopObj","l":"1071","t":"844","src":"images/tree1m.png"},{"classO":"StopObj","l":"1130","t":"841","src":"images/tree1m.png"},{"classO":"StopObj","l":"1184","t":"843","src":"images/tree1m.png"},{"classO":"StopObj","l":"1243","t":"845","src":"images/tree1m.png"},{"classO":"StopObj","l":"1358","t":"845","src":"images/tree1m.png"},{"classO":"StopObj","l":"1301","t":"845","src":"images/tree1m.png"},{"classO":"StopObj","l":"1358","t":"845","src":"images/tree1m.png"},{"classO":"StopObj","l":"1243","t":"845","src":"images/tree1m.png"},{"classO":"StopObj","l":"1243","t":"845","src":"images/tree1m.png"},{"classO":"StopObj","l":"1301","t":"845","src":"images/tree1m.png"},{"classO":"StopObj","l":"1414","t":"845","src":"images/tree1m.png"},{"classO":"StopObj","l":"202","t":"835","src":"images/tree1m.png"},{"classO":"StopObj","l":"144","t":"835","src":"images/tree1m.png"},{"classO":"StopObj","l":"88","t":"833","src":"images/tree1m.png"},{"classO":"StopObj","l":"34","t":"833","src":"images/tree1m.png"},{"classO":"StopObj","l":"88","t":"833","src":"images/tree1m.png"},{"classO":"StopObj","l":"144","t":"835","src":"images/tree1m.png"},{"classO":"StopObj","l":"202","t":"835","src":"images/tree1m.png"},{"classO":"StopObj","l":"260","t":"837","src":"images/tree1m.png"},{"classO":"StopObj","l":"319","t":"837","src":"images/tree1m.png"},{"classO":"StopObj","l":"379","t":"837","src":"images/tree1m.png"},{"classO":"StopObj","l":"438","t":"839","src":"images/tree1m.png"},{"classO":"StopObj","l":"495","t":"840","src":"images/tree1m.png"},{"classO":"StopObj","l":"556","t":"838","src":"images/tree1m.png"},{"classO":"StopObj","l":"34","t":"772","src":"images/tree1m.png"},{"classO":"StopObj","l":"34","t":"711","src":"images/tree1m.png"},{"classO":"StopObj","l":"39","t":"649","src":"images/tree1m.png"},{"classO":"StopObj","l":"35","t":"595","src":"images/tree1m.png"},{"classO":"StopObj","l":"35","t":"595","src":"images/tree1m.png"},{"classO":"StopObj","l":"34","t":"538","src":"images/tree1m.png"},{"classO":"StopObj","l":"35","t":"480","src":"images/tree1m.png"},{"classO":"StopObj","l":"38","t":"419","src":"images/tree1m.png"},{"classO":"StopObj","l":"37","t":"368","src":"images/tree1m.png"},{"classO":"StopObj","l":"30","t":"32","src":"images/tree1m.png"},{"classO":"StopObj","l":"90","t":"32","src":"images/tree1m.png"},{"classO":"StopObj","l":"152","t":"32","src":"images/tree1m.png"},{"classO":"StopObj","l":"210","t":"30","src":"images/tree1m.png"},{"classO":"StopObj","l":"270","t":"32","src":"images/tree1m.png"},{"classO":"StopObj","l":"330","t":"34","src":"images/tree1m.png"},{"classO":"StopObj","l":"395","t":"36","src":"images/tree1m.png"},{"classO":"StopObj","l":"33","t":"87","src":"images/tree1m.png"},{"classO":"StopObj","l":"36","t":"145","src":"images/tree1m.png"},{"classO":"StopObj","l":"35","t":"202","src":"images/tree1m.png"},{"classO":"StopObj","l":"1021","t":"40","src":"images/tree1m.png"},{"classO":"StopObj","l":"1081","t":"38","src":"images/tree1m.png"},{"classO":"StopObj","l":"1141","t":"36","src":"images/tree1m.png"},{"classO":"StopObj","l":"1201","t":"34","src":"images/tree1m.png"},{"classO":"StopObj","l":"1263","t":"38","src":"images/tree1m.png"},{"classO":"StopObj","l":"1326","t":"36","src":"images/tree1m.png"},{"classO":"StopObj","l":"1388","t":"39","src":"images/tree1m.png"},{"classO":"StopObj","l":"1445","t":"36","src":"images/tree1m.png"},{"classO":"StopObj","l":"1503","t":"35","src":"images/tree1m.png"},{"classO":"StopObj","l":"1562","t":"33","src":"images/tree1m.png"},{"classO":"StopObj","l":"1625","t":"34","src":"images/tree1m.png"},{"classO":"StopObj","l":"1687","t":"34","src":"images/tree1m.png"},{"classO":"StopObj","l":"1746","t":"36","src":"images/tree1m.png"},{"classO":"StopObj","l":"1803","t":"36","src":"images/tree1m.png"},{"classO":"StopObj","l":"1861","t":"36","src":"images/tree1m.png"},{"classO":"StopObj","l":"1865","t":"91","src":"images/tree1m.png"},{"classO":"StopObj","l":"1866","t":"146","src":"images/tree1m.png"},{"classO":"StopObj","l":"1866","t":"202","src":"images/tree1m.png"},{"classO":"StopObj","l":"1868","t":"259","src":"images/tree1m.png"},{"classO":"StopObj","l":"1869","t":"316","src":"images/tree1m.png"},{"classO":"StopObj","l":"1869","t":"374","src":"images/tree1m.png"},{"classO":"StopObj","l":"1871","t":"432","src":"images/tree1m.png"},{"classO":"StopObj","l":"1473","t":"840","src":"images/tree1m.png"},{"classO":"StopObj","l":"1532","t":"846","src":"images/tree1m.png"},{"classO":"StopObj","l":"1593","t":"840","src":"images/tree1m.png"},{"classO":"StopObj","l":"1653","t":"845","src":"images/tree1m.png"},{"classO":"StopObj","l":"1710","t":"845","src":"images/tree1m.png"},{"classO":"StopObj","l":"1769","t":"840","src":"images/tree1m.png"},{"classO":"StopObj","l":"1825","t":"840","src":"images/tree1m.png"},{"classO":"StopObj","l":"1878","t":"839","src":"images/tree1m.png"},{"classO":"StopObj","l":"1874","t":"778","src":"images/tree1m.png"},{"classO":"StopObj","l":"1868","t":"717","src":"images/tree1m.png"},{"classO":"StopObj","l":"1864","t":"655","src":"images/tree1m.png"},{"classO":"StopObj","l":"1867","t":"590","src":"images/tree1m.png"},{"classO":"StopObj","l":"1807","t":"591","src":"images/tree1m.png"},{"classO":"StopObj","l":"1748","t":"585","src":"images/tree1m.png"},{"classO":"StopObj","l":"1685","t":"591","src":"images/tree1m.png"},{"classO":"StopObj","l":"1631","t":"593","src":"images/tree1m.png"},{"classO":"StopObj","l":"1572","t":"591","src":"images/tree1m.png"},{"classO":"StopObj","l":"1573","t":"649","src":"images/tree1m.png"},{"classO":"StopObj","l":"1576","t":"706","src":"images/tree1m.png"},{"classO":"StopObj","l":"1098","t":"348","src":"images/dom1.png"},{"classO":"StopObj","l":"531","t":"365","src":"images/tree1m.png"},{"classO":"StopObj","l":"1115","t":"386","src":"images/tree1m.png"},{"classO":"StopObj","l":"1170","t":"387","src":"images/tree1m.png"},{"classO":"StopObj","l":"1809","t":"432","src":"images/tree1m.png"},{"classO":"StopObj","l":"1753","t":"430","src":"images/tree1m.png"},{"classO":"StopObj","l":"1699","t":"380","src":"images/tree1m.png"},{"classO":"StopObj","l":"1655","t":"332","src":"images/tree1m.png"},{"classO":"StopObj","l":"36","t":"257","src":"images/tree1m.png"},{"classO":"StopObj","l":"35","t":"312","src":"images/tree1m.png"}]';
             var objL=jss.evalJSON();
@@ -161,7 +161,7 @@ var OknoInstr=Class.create({
         wind.insert(new Element('div').insert(butLC));
 
         var windeltP=new Element('div')
-        var eltP=new Element('div',{style:"background:#999;border-bottom:1px outset #777;"}).insert("Объекты");
+        var eltP=new Element('div',{style:"background:#999;border-bottom:1px outset #777;"}).insert("РћР±СЉРµРєС‚С‹");
         windeltP.insert(eltP);
         this.windEl.eltB=new Element('div',{style:"height:300px;border:1px inset #888;overflow:auto;"});
 
@@ -176,12 +176,12 @@ var OknoInstr=Class.create({
         wind.insert(windeltP);
 
         var windeltPC=new Element('div')
-        var eltPC=new Element('div',{style:"background:#999;border-bottom:1px outset #777;"}).insert("Свойства");
+        var eltPC=new Element('div',{style:"background:#999;border-bottom:1px outset #777;"}).insert("РЎРІРѕР№СЃС‚РІР°");
         windeltPC.insert(eltPC);
         this.windEl.eltBC=new Element('div',{style:"height:300px;border:1px inset #888;overflow:auto;"}).insert("&nbsp");
         windeltPC.insert(this.windEl.eltBC);
 
-        var butGC=new Element('input',{type:'button',value:'Получить код'});
+        var butGC=new Element('input',{type:'button',value:'РџРѕР»СѓС‡РёС‚СЊ РєРѕРґ'});
         butGC.onclick=function(){
             var c='[';
             for(var i=0;i<thisEl.owner.listAllObj.length;i++){
@@ -198,7 +198,7 @@ var OknoInstr=Class.create({
             opt.width=300;
             opt.height=300;
             opt.zIndex=1002;
-            var v=new Wind(thisEl.owner.place, "Код",opt);
+            var v=new Wind(thisEl.owner.place, "РљРѕРґ",opt);
 
             v.show();
             v.setContent(new Element('div',{style:'overflow:auto;'}).insert(c));
@@ -261,7 +261,7 @@ var Util=Class.create({
         }
         return {pageWidth: pageWidth ,pageHeight: pageHeight , windowWidth: windowWidth, windowHeight: windowHeight};
     },
-//content - место в какую оболочку вставить , l -расстояние слева, t- расстояние сверху, el- текст который или контент нужно вставить, timeHide- время через которое удалить  в милисек(0 - не удалять никогда)
+//content - РјРµСЃС‚Рѕ РІ РєР°РєСѓСЋ РѕР±РѕР»РѕС‡РєСѓ РІСЃС‚Р°РІРёС‚СЊ , l -СЂР°СЃСЃС‚РѕСЏРЅРёРµ СЃР»РµРІР°, t- СЂР°СЃСЃС‚РѕСЏРЅРёРµ СЃРІРµСЂС…Сѓ, el- С‚РµРєСЃС‚ РєРѕС‚РѕСЂС‹Р№ РёР»Рё РєРѕРЅС‚РµРЅС‚ РЅСѓР¶РЅРѕ РІСЃС‚Р°РІРёС‚СЊ, timeHide- РІСЂРµРјСЏ С‡РµСЂРµР· РєРѕС‚РѕСЂРѕРµ СѓРґР°Р»РёС‚СЊ  РІ РјРёР»РёСЃРµРє(0 - РЅРµ СѓРґР°Р»СЏС‚СЊ РЅРёРєРѕРіРґР°)
     printEl:function(content,l,t,el,timeHide){
         var df=new Element('div',{style:"font-size:xx-large;position:absolute;left:"+l+"px;top:"+t+"px;z-index:3"}).insert(el);
         content.insert(df);
@@ -327,7 +327,7 @@ var Wind=Class.create({
 //function startDrag(e) {
 //    window.captureEvents(Event.MOUSEMOVE);
 //}
-//function moveIt(e) { // показывать координаты
+//function moveIt(e) { // РїРѕРєР°Р·С‹РІР°С‚СЊ РєРѕРѕСЂРґРёРЅР°С‚С‹
 //    status= "x: " + e.pageX + " y: " + e.pageY;
 //}
 //function endDrag(e) {
